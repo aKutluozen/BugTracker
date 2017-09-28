@@ -1,0 +1,64 @@
+<div ng-include="'view/top.html'"></div>
+<div class="large-12 columns">
+    <div data-alert ng-show="msg" class="alert alert-info">{{msg}}</div>
+    <div class="panel panel-default" ng-show="bugShow && !addFormShow">
+        <div class="panel-heading h4">{{ type }}<a class="btn btn-default btn-sm pull-right" ng-click="hide()"><span class="glyphicon glyphicon-eye-close"></span> Close</a>
+            <div class="clearfix"></div>
+        </div>
+        <div class="panel-body">
+            <label for="description">Description:</label>
+            <p>{{ description }}</p> <i>Submitted by {{ name }} at {{ bugDate }}</i> </div>
+    </div>
+</div>
+</div>
+<div class="panel panel-default" ng-show="addFormShow">
+    <div class="panel-heading h4">Report a new bug</div>
+    <div class="panel-body">
+        <form ng-submit="addFormSubmit()">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="problemType">Type:</label>
+                    <select class="form-control" id="problemType" name="type" ng-model="type" required>
+                        <option value="">None</option>
+                        <option>Bug</option>
+                        <option>Suggestion</option>
+                        <option>Concern</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="platform">Platform:</label>
+                    <select class="form-control" id="platform" name="type" ng-model="platform" required>
+                        <option value="">None</option>
+                        <option>Android</option>
+                        <option>iOS</option>
+                        <option>Browser/Chrome</option>
+						<option>Browser/Firefox</option>
+						<option>Browser/Explorer</option>
+						<option>Browser/Safari</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="name">Reporter's name:</label>
+                    <input type="text" ng-model="name" class="form-control" id="name" required></input>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea type="text" ng-model="description" rows="4" class="form-control" id="description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span> Report Bug</button>
+                    <button type="reset" class="btn btn-danger btn-sm" ng-click="hide()"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div ng-include="'view/list.html'"></div>

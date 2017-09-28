@@ -1,0 +1,50 @@
+<div ng-show="showSite">
+    <div ng-include="'view/top.html'"></div>
+    <div class="panel panel-default" ng-show="editFormShow">
+        <div class="panel-heading h4">Update bug</div>
+        <div class="panel-body">
+            <form ng-submit="editFormSubmit()">
+                <div class="col-md-12">
+                    <div class="col-md-4 well">
+                        <label>Type: </label> {{type}} </div>
+                    <div class="col-md-4 well">
+                        <label>Platform: </label> {{platform}} </div>
+                    <div class="col-md-4 well">
+                        <label>Reporter: </label> {{name}} </div>
+                    <div class="col-md-12 well">
+                        <label>Description: </label> {{ description }} </div>
+					<div class="col-md-12 well">
+                        <label>Reported on: </label> {{ bugDate }} </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="status">Status:</label>
+                        <select class="form-control" id="status" name="type" ng-model="status" required>
+                            <option value="">None</option>
+                            <option>Open</option>
+                            <option>In progress</option>
+                            <option>Fixed</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="assigned">Assigned to:</label>
+                        <select class="form-control" id="assigned" name="assigned" ng-model="assigned" required>
+                            <option>Ali Kutluozen</option>
+                            <option>Oscar Castenada</option>
+                            <option>Jake Friedfeld</option>
+                            <option>Gregg McDonald</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-floppy-open"></span> Update Bug</button>
+                    <button type="reset" class="btn btn-danger btn-sm" ng-click="hide()"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div ng-include="'view/list.html'"></div>
+</div>
+<div ng-show="!showSite"> You have to be logged in to view this page! </div>
